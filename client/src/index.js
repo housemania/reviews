@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import ReviewsList from './Reviews.jsx';
 import Ratings from './Ratings.jsx';
-// import Nav from './Nav.jsx'
+import Nav from './Nav.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class App extends React.Component {
   }
   // http://127.0.0.1:5000/reviews/76?offset=0&limit=7
   getReviews(houseId, page) {
+    let currentPage = page || 1;
     $.ajax({
       type: "get",
       url: `http://localhost:5000/reviews/${houseId}?offset=${page}&limit=7`,
@@ -62,9 +63,9 @@ class App extends React.Component {
         <div className="reviews">
           <ReviewsList reviews={this.state.reviews}/>
         </div>
-        {/* <div className="nav">
-          <Nav />
-        </div> */}
+        <div className="nav">
+          <Nav numOfRatings={this.state.ratings.numReviews}/>
+        </div>
       </div>
     )
   }

@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+var moment = require('moment');
 
 const Reviews = ({review}) => (
-  // return(
+
     <div>
       <div className="image">
         <img src={review.userImage}></img>
@@ -11,13 +12,13 @@ const Reviews = ({review}) => (
         {review.userName}
       </div>
       <div className="date">
-        {review.dateCreated}
+        {moment(Date.parse(review.dateCreated)).format("MMMM YYYY")}
       </div>
       <div className="message">
         <p>{review.comment}</p>
       </div>
     </div>
-  // )
+
 )
 
 const ReviewsList = (props) => (
@@ -31,3 +32,4 @@ const ReviewsList = (props) => (
 );
 
 export default ReviewsList;
+
