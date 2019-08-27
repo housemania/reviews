@@ -23,8 +23,8 @@ const Reviews = ({review}) => (
 const ReviewsList = (props) => (
   <div className="feed">
     <div className="reviews">
-    {props.reviews.map(feedItem =>
-      <Reviews review={feedItem} />
+    {props.reviews.map((feedItem, i)=>
+      <Reviews review={feedItem} key={i}/>
     )}
     </div>
   </div>
