@@ -8,6 +8,8 @@ app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
 
+app.use(express.static('./client/dist'));
+
 app.get('/reviews/:houseId', function(req, res) {
   const query = req.query;
   const params = req.params;

@@ -9,15 +9,24 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "setupdb": "node database/seedData.js"
+    "setupdb": "node database/seedData.js",
+    "build": "webpack -d --watch"
   },
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^4.1.0",
-    "mongoose": "^5.6.10"
+    "mongoose": "^5.6.10",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
   }
 }
