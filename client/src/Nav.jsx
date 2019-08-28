@@ -15,7 +15,7 @@ class Nav extends React.Component {
     let middle4;
     let middle5;
 
-    console.log("currentPage: " + this.props.currentPage + "   numOfPages: " + this.props.numOfPages);
+    // console.log("currentPage: " + this.props.currentPage + "   numOfPages: " + this.props.numOfPages);
     if (this.props.currentPage !== 0) {
       left = <div className="left" onClick={this.props.backPage}> left </div>
     } else {
@@ -128,7 +128,7 @@ class Nav extends React.Component {
 
     }
 
-     console.log(this.props.currentPage, this.props.numOfPages);
+
     if (this.props.currentPage !== this.props.numOfPages -1) {
       right = <div className="right" onClick={this.props.nextPage}> right </div>
     } else {

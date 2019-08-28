@@ -41,7 +41,6 @@ class App extends React.Component {
       url: `http://localhost:5000/reviews/${this.state.houseId}?offset=${newPage}&limit=${this.limit}`,
       contentTupe: "application/json",
       success: (data) => {
-        console.log(data)
         this.setState({
           reviews: data,
           page: newPage
