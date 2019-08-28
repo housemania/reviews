@@ -10,22 +10,44 @@ class App extends React.Component {
     super();
     this.state = {
       ratings: {},
-      reviews: []
+      reviews: [],
+      page: 0
     }
   }
   componentDidMount() {
     this.getRatings(4);
-    this.getReviews(4, 0);
+    this.getReviews(4);
   }
   // http://127.0.0.1:5000/reviews/76?offset=0&limit=7
-  getReviews(houseId, page) {
-    let currentPage = page || 1;
+  nextPage() {
+    this.setState({
+      page: this.state.page + 7
+    })
+    this.getReviews();
+  }
+  backPage() {
+    if (this.state.page > 0) {
+      this.setState({
+        page: this.state.page - 7
+      })
+    }
+    this.getReviews();
+  }
+  toPage(num) {
+    const limit = 7;
+    const offset = (num - 1) * limit;
+    this.setState({
+      page: offset
+    })
+    this.getReviews();
+  }
+  getReviews(houseId) {
+
     $.ajax({
       type: "get",
-      url: `http://localhost:5000/reviews/${houseId}?offset=${page}&limit=7`,
+      url: `http://localhost:5000/reviews/${houseId}?offset=${this.state.page}&limit=7`,
       contentTupe: "application/json",
       success: (data) => {
-        console.log(data);
         this.setState({
           reviews: data
         })
@@ -55,6 +77,7 @@ class App extends React.Component {
 
   }
   render() {
+    console.log(this.state.page);
     return (
       <div>
         <div className="ratings">
@@ -64,7 +87,11 @@ class App extends React.Component {
           <ReviewsList reviews={this.state.reviews}/>
         </div>
         <div className="nav">
-          <Nav numOfRatings={this.state.ratings.numReviews}/>
+          <Nav numOfRatings={this.state.ratings.numReviews}
+              nextPage={this.nextPage.bind(this)}
+              backPage={this.backPage.bind(this)}
+              toPage={this.toPage.bind(this)}
+          />
         </div>
       </div>
     )

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Nav = (props) => (
+const Nav = ({nextPage, backPage}) => (
   <div className="nav">
-    <div className="left" onClick={props.changePage}> left </div>
-    <div className="right" onClikc={props.changePage}> right </div>
+    <div className="left" onClick={backPage}> left </div>
+    <div className="right" onClick={nextPage}> right </div>
   </div>
 )
 

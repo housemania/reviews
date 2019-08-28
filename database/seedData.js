@@ -19,7 +19,7 @@ for (var i = 0; i < 100; i++) {
     const testData = {
       houseId: i,
       userId: faker.random.number(),
-      userName: faker.name.findName(),
+      userName: faker.name.firstName(),
       userImage: faker.image.imageUrl(),
       comment: faker.lorem.paragraph(),
       dateCreated: faker.date.past(),
@@ -32,6 +32,9 @@ for (var i = 0; i < 100; i++) {
         cleanliness: randomNumber()
       }
     };
+    if (j % 3 === 0) {
+      testData.comment = faker.lorem.paragraphs();
+    }
     if (j % randomNumber() === 0) {
       testData.response = {
         name: faker.name.findName(),
