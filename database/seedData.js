@@ -10,7 +10,7 @@ const randomNumber = function() {
   return Math.floor(Math.random() * Math.floor(5));
 }
 const randomNumberReviews = function() {
-  return Math.floor(Math.random() * Math.floor(75));
+  return Math.floor(Math.random() * Math.floor(300));
 }
 const dataArray = [];
 for (var i = 0; i < 100; i++) {

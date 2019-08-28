@@ -8,48 +8,43 @@ import Nav from './Nav.jsx'
 class App extends React.Component {
   constructor(props) {
     super();
+    this.limit = 7;
     this.state = {
+      houseId: 7,
       ratings: {},
       reviews: [],
       page: 0
+
     }
   }
   componentDidMount() {
-    this.getRatings(4);
-    this.getReviews(4);
+    this.getRatings();
+    this.getReviews(0);
   }
   // http://127.0.0.1:5000/reviews/76?offset=0&limit=7
   nextPage() {
-    this.setState({
-      page: this.state.page + 7
-    })
-    this.getReviews();
+    this.getReviews(this.state.page + this.limit);
   }
   backPage() {
     if (this.state.page > 0) {
-      this.setState({
-        page: this.state.page - 7
-      })
+      this.getReviews(this.state.page - this.limit);
     }
-    this.getReviews();
-  }
+   }
   toPage(num) {
-    const limit = 7;
-    const offset = (num - 1) * limit;
-    this.setState({
-      page: offset
-    })
-    this.getReviews();
-  }
-  getReviews(houseId) {
+    const offset = num * this.limit;
+    this.getReviews(offset);
 
+  }
+  getReviews(newPage) {
     $.ajax({
       type: "get",
-      url: `http://localhost:5000/reviews/${houseId}?offset=${this.state.page}&limit=7`,
+      url: `http://localhost:5000/reviews/${this.state.houseId}?offset=${newPage}&limit=${this.limit}`,
       contentTupe: "application/json",
       success: (data) => {
+        console.log(data)
         this.setState({
-          reviews: data
+          reviews: data,
+          page: newPage
         })
       },
       error: () => {
@@ -58,15 +53,14 @@ class App extends React.Component {
 
     })
   }
-  getRatings(num) {
-
+  getRatings() {
     $.ajax({
       type: "get",
-      url: "http://localhost:5000/ratings/" + num,
+      url: "http://localhost:5000/ratings/" + this.state.houseId,
       contentTupe: "application/json",
       success: (data) => {
         this.setState({
-          ratings: data
+           ratings: data
         })
       },
       error: () => {
@@ -77,7 +71,6 @@ class App extends React.Component {
 
   }
   render() {
-    console.log(this.state.page);
     return (
       <div>
         <div className="ratings">
@@ -87,10 +80,11 @@ class App extends React.Component {
           <ReviewsList reviews={this.state.reviews}/>
         </div>
         <div className="nav">
-          <Nav numOfRatings={this.state.ratings.numReviews}
+          <Nav numOfPages={Math.ceil(this.state.ratings.numReviews / this.limit)}
               nextPage={this.nextPage.bind(this)}
               backPage={this.backPage.bind(this)}
               toPage={this.toPage.bind(this)}
+              currentPage={Math.floor(this.state.page / 7)}
           />
         </div>
       </div>
