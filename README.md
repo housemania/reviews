@@ -14,12 +14,6 @@
   - https://github.com/housemania/nearby-service-repo
  
 
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
 ## Usage
 
 - npm run start : starts nodemon server
