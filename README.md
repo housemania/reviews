@@ -1,11 +1,6 @@
 # House Mania
 
 > Reviews service for House Mania. A online vaction and home rental marketplace designed to have the best user experience possible.
-
-## Teammates
-
-  - Tiffany J Lee
-  - Keitel Jovin
  
 
 ## Related Projects
