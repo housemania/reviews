@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const Review = require('../database/schema.js');
 const port = 5000;
-var cors = require('cors');
-// const exports = module.exports = {};
+const cors = require('cors');
+const db = require('../db/index.js');
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
@@ -12,6 +12,7 @@ app.listen(port, function() {
 app.use(express.static('./client/dist'));
 app.use(express.static('./images'));
 app.use(cors());
+
 app.get('/reviews/:houseId', function(req, res) {
   const query = req.query;
   const params = req.params;
@@ -27,39 +28,7 @@ app.get('/reviews/:houseId', function(req, res) {
     }
   })
 });
-const roundNearHalf = function(number) {
-  return (Math.round(number * 2) / 2).toFixed(1);
-};
-const getAverages = function(data) {
 
-  let accuracy = 0;
-  let communication = 0;
-  let location = 0;
-  let checkIn = 0;
-  let cleanliness = 0;
-  let value = 0;
-  let count = 0;
-  for (var i = 0; i < data.length; i++) {
-    accuracy += data[i].starRatings.accuracy;
-    communication += data[i].starRatings.communication;
-    location += data[i].starRatings.location;
-    checkIn += data[i].starRatings.checkIn;
-    value += data[i].starRatings.value;
-    cleanliness += data[i].starRatings.cleanliness;
-    count += 1;
-  }
-  const result = {
-    accuracy: roundNearHalf(accuracy / count),
-    communication: roundNearHalf(communication / count),
-    location: roundNearHalf(location / count),
-    checkIn: roundNearHalf(checkIn / count),
-    value: roundNearHalf(value / count),
-    cleanliness: roundNearHalf(cleanliness / count),
-  }
-  result.overall = roundNearHalf((accuracy + communication + location + checkIn + value + cleanliness) / (6 * count));
-  result.numReviews = data.length;
-  return result;
-}
 app.get('/ratings/:houseId', function(req, res) {
   const params = req.params;
   Review.find(params, function(err, results) {

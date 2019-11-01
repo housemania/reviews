@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import ReactPaginate from 'react-paginate';
 
 
+
+
 const imgUrls = {
   leftPage: "http://127.0.0.1:5000/leftPage.jpg",
   rightPage: "http://127.0.0.1:5000/rightPage.jpg",
@@ -11,32 +13,32 @@ const imgUrls = {
 
 }
 
-const NavContainer = styled.div`
-  display: grid;
-  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-  grid-template-rows: 50px;
-`;
-const LeftRight = styled.img`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-`;
-const CurrentNums = styled.div`
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-const Nums = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const Current = styled.div`
-  position: relative;
-`;
+// const NavContainer = styled.div`
+//   display: grid;
+//   grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+//   grid-template-rows: 50px;
+// `;
+// const LeftRight = styled.img`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 50px;
+// `;
+// const CurrentNums = styled.div`
+//   color: white;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// `;
+// const Nums = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
+// const Current = styled.div`
+//   position: relative;
+// `;
 
 class Nav extends React.Component {
   constructor(props) {
