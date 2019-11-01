@@ -32,3 +32,5 @@ const getAverages = function(data) {
   return result;
 };
 
+
+module.exports.getAverages = getAverages;

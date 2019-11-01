@@ -3,7 +3,7 @@ const app = express();
 const Review = require('../database/schema.js');
 const port = 5000;
 const cors = require('cors');
-const db = require('../db/index.js');
+const helpers = require('./helpers.js');
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
@@ -35,7 +35,7 @@ app.get('/ratings/:houseId', function(req, res) {
     if (err) {
       res.status(400).send(err);
     } else {
-      const averages = getAverages(results);
+      const averages = helpers.getAverages(results);
       res.status(200).send(averages);
     }
   })
