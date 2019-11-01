@@ -47,11 +47,10 @@ class Nav extends React.Component {
   }
 
   handlePageClick(data) {
-    console.log(data);
     this.props.toPage(data.selected);
   };
   render() {
-    console.log(this.props);
+    
     return (
       <ReactPaginate
       previousLabel= <img src={imgUrls.leftPage}/>
