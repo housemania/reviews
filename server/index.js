@@ -12,6 +12,7 @@ app.listen(port, function() {
 app.use(express.static('./client/dist'));
 app.use(express.static('./images'));
 app.use(cors());
+
 app.get('/reviews/:houseId', function(req, res) {
   const query = req.query;
   const params = req.params;
