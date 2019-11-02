@@ -41,19 +41,6 @@ app.get('/ratings/:houseId', function(req, res) {
   })
 });
 
-// app.get('/totalReviews/:houseId', function(req, res) {
-//   const params = req.params;
-
-//   Review.countDocuments(params, function(err, results) {
-//     const total = results + '';
-//     if (err) {
-//       res.status(400).send(err);
-//     } else {
-//       res.status(200).send(total);
-//     }
-//   })
-// });
-
 app.get('/totalReviews/:houseId', function(req, res) {
   const query = req.query;
   const params = req.params;

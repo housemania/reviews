@@ -1,7 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-var moment = require('moment');
 import styled from 'styled-components';
+import moment from 'moment';
+import BoldText from './BoldText.jsx';
+import Message from './Message.jsx';
 
 const ReviewContainer = styled.div`
   display: grid;
@@ -36,7 +37,7 @@ const ParentTextDiv = styled.div`
 `;
 const TextDiv = styled.div`
   grid-area: message;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+  font-family:sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.375em;
@@ -45,7 +46,7 @@ const TextDiv = styled.div`
 const ResponseTextDiv = styled.div`
   grid-area: responseUserName;
   margin-top: 20px;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+  font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.375em;
@@ -53,31 +54,31 @@ const ResponseTextDiv = styled.div`
 `;
 const NameDiv = styled.div`
   grid-area: userName;
-  word-wrap: break-word !important;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  line-height: 1.375em !important;
-  color: #484848 !important;
+  word-wrap: break-word;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.375em;
+  color: #484848;
 `;
 const ResponseNameDiv = styled.div`
   grid-area: responseUserName;
-  word-wrap: break-word !important;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  line-height: 1.375em !important;
-  color: #484848 !important;
+  word-wrap: break-word;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.375em;
+  color: #484848;
 `;
 const DateDiv = styled.div`
   margin-top: 25px;
   grid-area: userName;
-  word-wrap: break-word !important;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.2857142857142858em !important;
-  color: #484848 !important;
+  word-wrap: break-word;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2857142857142858em;
+  color: #484848;
 `;
 const Image = styled.img`
   grid-row: 1 / 4;
@@ -92,23 +93,16 @@ const ResponseImage = styled.img`
   height: 40px;
   border-radius: 50%
 `;
-const ReadMore = styled.a`
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.375em;
-  text-decoration: none;
-  color: #008489;
-`;
+
 const ResponseDate = styled.div`
   margin-top: 15px;
   grid-area: responseDate;
-  word-wrap: break-word !important;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.2857142857142858em !important;
-  color: #484848 !important;
+  word-wrap: break-word;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2857142857142858em;
+  color: #484848;
 `;
 const LineThrough = styled.div`
   grid-area: line;
@@ -116,62 +110,6 @@ const LineThrough = styled.div`
   margin-top: 24px;
   margin-bottom: 24px;
 `;
-
-
-
-const BoldText = (props) => (
-  props.text.map((item, i) => {
-    if (i === props.text.length - 1) {
-      return <span>{item}</span>
-   } else {
-      return <span>{item}<b>{props.keyword}</b></span>
-    }
-  })
-
-)
-
-class Message extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expanded: false
-    }
-    this.showMore = this.showMore.bind(this);
-  }
-  showMore(e) {
-    e.preventDefault();
-    this.setState({
-      expanded: !this.state.expanded
-    })
-  }
-  render() {
-
-    let button;
-    let message;
-    if (this.state.expanded === false) {
-      message = this.props.message.slice(0, 320);
-      message += '...';
-      button = <ReadMore href="#" onClick={this.showMore}>
-              Read more
-              </ReadMore>
-    } else {
-      message = this.props.message;
-      button = null;
-    }
-    return (
-      <ParentTextDiv>
-        <TextDiv className="message">
-          <p>{message}{button}</p>
-
-        </TextDiv>
-
-      </ParentTextDiv>
-    )
-  }
-
-
-}
-
 
 class Reviews extends React.Component {
   constructor(props){
@@ -250,16 +188,7 @@ class Reviews extends React.Component {
   }
 }
 
-const ReviewsList = (props) => (
-   <div className="feed">
-    <div className="reviews">
-    {props.reviews.map((feedItem, i)=>
-      <Reviews review={feedItem} key={i} searchTerm={props.searchTerm}/>
-    )}
-    </div>
-  </div>
-);
 
-export default ReviewsList;
+export default Reviews;
 
 
