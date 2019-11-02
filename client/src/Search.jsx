@@ -10,10 +10,10 @@ const Input = styled.input`
 const Exit = styled.div`
   margin-top: -25px;
   margin-left: 160px;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  line-height: 1.375em !important;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.375em;
   color: #EBEBER;
 `;
 
