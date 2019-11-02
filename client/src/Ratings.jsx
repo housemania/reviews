@@ -7,7 +7,6 @@ const LineThrough = styled.div`
   margin-bottom: 24px;
 `;
 
-
 const RatingsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -57,7 +56,7 @@ const imgUrls = {
   "4.0": "http://127.0.0.1:5000/rating4star.jpg"
 
 }
-{/* <ResponseImage src={this.props.review.response.image}></ResponseImage> */}
+
 const Ratings = ({averageRatings}) => (
   <div>
     <OverallContainer>
