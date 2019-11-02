@@ -83,25 +83,20 @@ class Reviews extends React.Component {
     }
     let message;
     if (this.props.review.comment.length < 320 || this.props.searchTerm.length > 0) {
-      let output = "";
+      let text;
       if (this.props.searchTerm !== '') {
         const searchItem = this.props.searchTerm
         const split = this.props.review.comment.split(this.props.searchTerm);
-        message =
-        <ParentTextDiv className="message">
-          <TextDiv>
-            <BoldText text={split} keyword={searchItem}/>
-          </TextDiv>
-        </ParentTextDiv>
-
+        text =  <BoldText text={split} keyword={searchItem}/>
       } else {
-         message =
+        text = <p>{this.props.review.comment}</p>
+      }
+      message =
          <ParentTextDiv className="message">
             <TextDiv>
-              <p>{this.props.review.comment}</p>
+             {text}
             </TextDiv>
           </ParentTextDiv>
-      }
     } else {
       message = <Message message={this.props.review.comment}/>
     }
