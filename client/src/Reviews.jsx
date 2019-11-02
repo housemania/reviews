@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-var moment = require('moment');
 import styled from 'styled-components';
+import moment from 'moment';
+import BoldText from './BoldText.jsx';
 
 const ReviewContainer = styled.div`
   display: grid;
@@ -117,18 +117,6 @@ const LineThrough = styled.div`
   margin-bottom: 24px;
 `;
 
-
-
-const BoldText = (props) => (
-  props.text.map((item, i) => {
-    if (i === props.text.length - 1) {
-      return <span>{item}</span>
-   } else {
-      return <span>{item}<b>{props.keyword}</b></span>
-    }
-  })
-
-)
 
 class Message extends React.Component {
   constructor(props) {
@@ -250,16 +238,7 @@ class Reviews extends React.Component {
   }
 }
 
-const ReviewsList = (props) => (
-   <div className="feed">
-    <div className="reviews">
-    {props.reviews.map((feedItem, i)=>
-      <Reviews review={feedItem} key={i} searchTerm={props.searchTerm}/>
-    )}
-    </div>
-  </div>
-);
 
-export default ReviewsList;
+export default Reviews;
 
 

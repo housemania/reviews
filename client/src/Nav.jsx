@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import ReactPaginate from 'react-paginate';
 
@@ -50,7 +49,7 @@ class Nav extends React.Component {
     this.props.toPage(data.selected);
   };
   render() {
-    
+
     return (
       <ReactPaginate
       previousLabel= <img src={imgUrls.leftPage}/>

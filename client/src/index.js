@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import ReviewsList from './Reviews.jsx';
+import ReviewsList from './ReviewsList.jsx';
 import Ratings from './Ratings.jsx';
 import Nav from './Nav.jsx';
 import Search from './Search.jsx';
@@ -139,6 +139,7 @@ class App extends React.Component {
     )
   }
 }
+
 ReactDOM.render(
   <App />,
   document.getElementById('app')
