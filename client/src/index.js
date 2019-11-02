@@ -26,7 +26,6 @@ class App extends React.Component {
       length: 0
     }
     this.searchTerm = '';
-    this.length = 0;
   }
   componentDidMount() {
     this.getRatings();
@@ -49,7 +48,6 @@ class App extends React.Component {
 
     const offset = num * this.limit;
     this.getReviews(offset);
-    // this.getRatings();
   }
   getReviews(newPage) {
     let currentUrl;
