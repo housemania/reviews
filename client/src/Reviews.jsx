@@ -90,20 +90,18 @@ class Reviews extends React.Component {
         message =
         <ParentTextDiv className="message">
           <TextDiv>
-          <BoldText text={split} keyword={searchItem}/>
+            <BoldText text={split} keyword={searchItem}/>
           </TextDiv>
         </ParentTextDiv>
 
       } else {
-         message = <ParentTextDiv className="message">
-                  <TextDiv>
-                  <p>{this.props.review.comment}</p>
-                   </TextDiv>
-                </ParentTextDiv>
+         message =
+         <ParentTextDiv className="message">
+            <TextDiv>
+              <p>{this.props.review.comment}</p>
+            </TextDiv>
+          </ParentTextDiv>
       }
-
-
-
     } else {
       message = <Message message={this.props.review.comment}/>
     }

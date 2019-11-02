@@ -51,16 +51,16 @@ const ResponseDate = styled.div`
 const Response = (props) => (
   <ResponseContainer className="response">
     <div className="responseImage">
-      <ResponseImage src={props.image}></ResponseImage>
+      <ResponseImage src={props.message.image}></ResponseImage>
     </div>
     <ResponseNameDiv className="respnseTittle">
-      Response from {props.name}:
+      Response from {props.message.name}:
     </ResponseNameDiv>
     <ResponseTextDiv className="responsecomment">
-      {props.comment}
+      {props.message.comment}
     </ResponseTextDiv>
     <ResponseDate className="responseDate">
-      {moment(props.dateCreated).format("MMMM YYYY")}
+      {moment(props.message.dateCreated).format("MMMM YYYY")}
     </ResponseDate>
   </ResponseContainer>
 );
