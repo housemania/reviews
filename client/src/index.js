@@ -56,10 +56,10 @@ class App extends React.Component {
     let secondUrl;
     if (this.searchTerm === '') {
       currentUrl = `http://localhost:5000/reviews/${this.state.houseId}?offset=${newPage}&limit=${this.limit}`
-      secondUrl = `http://localhost:5000/reviews/${this.state.houseId}`
+      secondUrl = `http://localhost:5000/totalReviews/${this.state.houseId}`
     } else {
       currentUrl = `http://localhost:5000/reviews/${this.state.houseId}?offset=${newPage}&limit=${this.limit}&search=${this.searchTerm}`
-      secondUrl = `http://localhost:5000/reviews/${this.state.houseId}?search=${this.searchTerm}`
+      secondUrl = `http://localhost:5000/totalReviews/${this.state.houseId}?search=${this.searchTerm}`
     }
     if (newPage === 0) {
       $.ajax({
@@ -68,7 +68,7 @@ class App extends React.Component {
         contentTupe: "application/json",
         success: (data) => {
           this.setState({
-            length: data.length
+            length: data
           })
         },
         error: () => {
