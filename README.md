@@ -21,7 +21,7 @@
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
+- Node v10.15.3
 - MongoDB 4.2
 
 
