@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import styled from 'styled-components';
+
 import ReviewsList from './ReviewsList.jsx';
 import Ratings from './Ratings.jsx';
 import Nav from './Nav.jsx';
 import Search from './Search.jsx';
-import styled from 'styled-components';
 
 const SearchDiv = styled.div`
   float: right;
@@ -31,24 +32,17 @@ class App extends React.Component {
     this.getRatings();
     this.getReviews(0);
   }
-  nextPage() {
-    this.getReviews(this.state.page + this.limit);
-  }
-  backPage() {
-    if (this.state.page > 0) {
-      this.getReviews(this.state.page - this.limit);
-    }
-   }
+
   search(term) {
     this.searchTerm = term;
     this.toPage(0);
-
   }
-  toPage(num) {
 
+  toPage(num) {
     const offset = num * this.limit;
     this.getReviews(offset);
   }
+
   getReviews(newPage) {
     let currentUrl;
     let secondUrl;
@@ -127,10 +121,7 @@ class App extends React.Component {
         </div>
         <div className="nav">
           <Nav numOfPages={Math.ceil(this.state.length / this.limit)}
-              nextPage={this.nextPage.bind(this)}
-              backPage={this.backPage.bind(this)}
               toPage={this.toPage.bind(this)}
-              currentPage={Math.floor(this.state.page / 7)}
           />
         </div>
       </div>
