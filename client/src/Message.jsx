@@ -6,14 +6,10 @@ const ParentTextDiv = styled.div`
 `;
 const TextDiv = styled.div`
   grid-area: message;
-  font-family:sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.375em;
-  color: #484848;
 `;
 const ReadMore = styled.a`
-  font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.375em;
