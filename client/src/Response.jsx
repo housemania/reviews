@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 const ResponseContainer = styled.div`
   display: grid;
@@ -39,21 +40,30 @@ const ResponseDate = styled.div`
   line-height: 1.2857142857142858em;
 `;
 
-const Response = (props) => (
+const Response = ({ message }) => (
   <ResponseContainer className="response">
     <div className="responseImage">
-      <ResponseImage src={props.message.image}></ResponseImage>
+      <ResponseImage src={message.image}></ResponseImage>
     </div>
     <ResponseNameDiv className="respnseTittle">
-      Response from {props.message.name}:
+      Response from {message.name}:
     </ResponseNameDiv>
     <ResponseTextDiv className="responsecomment">
-      {props.message.comment}
+      {message.comment}
     </ResponseTextDiv>
     <ResponseDate className="responseDate">
-      {moment(props.message.dateCreated).format("MMMM YYYY")}
+      {moment(message.dateCreated).format("MMMM YYYY")}
     </ResponseDate>
   </ResponseContainer>
 );
+
+Response.propTypes = {
+  message: PropTypes.shape({
+    image: PropTypes.string,
+    name: PropTypes.string,
+    comment: PropTypes.string,
+    dateCreated: PropTypes.string,
+  }).isRequired
+};
 
 export default Response;

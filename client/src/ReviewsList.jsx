@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+
 import Message from './Message.jsx';
 import Response from './Response.jsx';
 
@@ -60,25 +62,35 @@ const LineThrough = styled.div`
   margin-bottom: 24px;
 `;
 
-const BoldText = (props) => (
-  props.text.map((item, i) => {
-    if (i === props.text.length - 1) {
+const BoldText = ({ text, keyword }) => (
+  text.map((item, i) => {
+    if (i === text.length - 1) {
       return <span>{item}</span>
    } else {
-      return <span>{item}<b>{props.keyword}</b></span>
+      return <span>{item}<b>{keyword}</b></span>
     }
   })
 );
 
-const ReviewsList = (props) => (
+BoldText.propTypes = {
+  text: PropTypes.string.isRequired,
+  keyword: PropTypes.string.isRequired
+};
+
+const ReviewsList = ({ reviews, searchTerm }) => (
   <div className="feed">
     <div className="reviews">
-      {props.reviews.map((feedItem, i)=>
-        <Reviews review={feedItem} key={i} searchTerm={props.searchTerm}/>
+      {reviews.map((item, i)=>
+        <Reviews review={item} key={i} searchTerm={searchTerm}/>
       )}
     </div>
   </div>
 );
+
+ReviewsList.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  reviews: PropTypes.array.isRequired
+};
 
 class Reviews extends React.Component {
   constructor(props){
@@ -136,5 +148,16 @@ class Reviews extends React.Component {
 
   }
 }
+
+Reviews.propTypes = {
+  review: PropTypes.shape({
+    response: PropTypes.object,
+    searchTerm: PropTypes.string,
+    comment: PropTypes.string,
+    userImage: PropTypes.string,
+    userName: PropTypes.string,
+    dateCreated: PropTypes.string
+  }).isRequired
+};
 
 export default ReviewsList;

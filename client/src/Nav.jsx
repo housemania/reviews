@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactPaginate from 'react-paginate';
-
+import PropTypes from 'prop-types';
 
 
 
@@ -52,21 +52,26 @@ class Nav extends React.Component {
 
     return (
       <ReactPaginate
-      previousLabel= <img src={imgUrls.leftPage}/>
-      nextLabel= <img src={imgUrls.rightPage}/>
-      breakLabel={'...'}
-      breakClassName={'break-me'}
-      pageCount={this.props.numOfPages}
-      marginPagesDisplayed={2}
-      pageRangeDisplayed={5}
-      onPageChange={this.handlePageClick}
-      containerClassName={'pagination'}
-      subContainerClassName={'pages pagination'}
-      activeClassName={'active'}
-    />
+        previousLabel= <img src={imgUrls.leftPage}/>
+        nextLabel= <img src={imgUrls.rightPage}/>
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={this.props.numOfPages}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={this.handlePageClick}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'}
+      />
     );
   }
 }
+
+Nav.propTypes = {
+  numOfPages: PropTypes.number.isRequired,
+  toPage: PropTypes.func.isRequired
+};
 
 export default Nav;
 

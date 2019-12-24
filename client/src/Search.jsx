@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Input = styled.input`
   width: 170px;
@@ -38,26 +39,32 @@ class Search extends React.Component {
   render() {
     let exit;
     if (this.state.term !== '') {
-      exit = <Exit onClick={() => {
-        this.search('');
-        this.setState({term: ''});
-        document.getElementById('search').value = "";
-      }}>X</Exit>
+      exit = (
+        <Exit onClick={() => {
+          this.search('');
+          this.setState({term: ''});
+          document.getElementById('search').value = "";
+        }}>X</Exit>
+      );
     } else {
       exit = null;
     }
     return (
       <div className="search">
-         <form onSubmit={this.handleSubmit}>
-        <label>
-        <Input id="search" type="text" name="name" placeholder="Search Reviews" onChange={this.handleChangeSearch}/>
-        {exit}
-        </label>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <Input id="search" type="text" name="name" placeholder="Search Reviews" onChange={this.handleChangeSearch}/>
+            {exit}
+          </label>
         </form>
       </div>
     )
   }
 }
+
+Search.propTypes = {
+  search: PropTypes.func.isRequired,
+};
 
 export default Search;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const LineThrough = styled.div`
   border-bottom: 1px solid #EBEBEB;
@@ -51,7 +52,7 @@ const imgUrls = {
 
 }
 
-const Ratings = ({averageRatings}) => (
+const Ratings = ({ averageRatings }) => (
   <div>
     <OverallContainer>
       <NumReviewsDiv id="numReviews">{averageRatings.numReviews} Reviews
@@ -59,10 +60,6 @@ const Ratings = ({averageRatings}) => (
       <OverallRating src={imgUrls[averageRatings.overall]}></OverallRating>
     </OverallContainer>
     <LineThrough></LineThrough>
-
-
-
-
     <TextDiv id="ratings">
     <RatingsContainer>
       <div id="accuracy">Accuracy</div>
@@ -82,5 +79,18 @@ const Ratings = ({averageRatings}) => (
 
   </div>
 )
+
+Ratings.propTypes = {
+  averageRatings: PropTypes.shape({
+    numReviews: PropTypes.number,
+    overall: PropTypes.string,
+    accuracy: PropTypes.string,
+    communication: PropTypes.string,
+    cleanliness: PropTypes.string,
+    location: PropTypes.string,
+    checkIn: PropTypes.string,
+    value: PropTypes.string,
+  }).isRequired
+};
 
 export default Ratings;
