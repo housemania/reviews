@@ -14,21 +14,14 @@ const ResponseContainer = styled.div`
 `;
 const ResponseNameDiv = styled.div`
   grid-area: responseUserName;
-  word-wrap: break-word;
-  font-family: sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.375em;
-  color: #484848;
 `;
 const ResponseTextDiv = styled.div`
   grid-area: responseUserName;
   margin-top: 20px;
-  font-family: sans-serif;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 1.375em;
-  color: #484848;
 `;
 const ResponseImage = styled.img`
   grid-area: responseImg;
@@ -41,11 +34,9 @@ const ResponseDate = styled.div`
   margin-top: 15px;
   grid-area: responseDate;
   word-wrap: break-word;
-  font-family: sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2857142857142858em;
-  color: #484848;
 `;
 
 const Response = (props) => (

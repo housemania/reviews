@@ -11,23 +11,18 @@ const RatingsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 40px 40px 40px;
-
 `;
 const TextDiv = styled.div`
-  font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.375em;
   color: #484848;
 `;
 const NumReviewsDiv = styled.div`
-  margin: 0px;
   word-wrap: break-word;
-  font-family: sans-serif;
   font-size: 24px;
   font-weight: 800;
   line-height: 1.25em;
-  color: #484848;
   padding-top: 2px;
   padding-bottom: 2px;
 `;
@@ -41,7 +36,6 @@ const OverallRating = styled.img`
 `;
 const EachRating = styled.img`
   width: 100px;
-  // margin: auto;
 `;
 
 const imgUrls = {

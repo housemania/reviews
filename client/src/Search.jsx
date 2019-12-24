@@ -9,7 +9,6 @@ const Input = styled.input`
 const Exit = styled.div`
   margin-top: -25px;
   margin-left: 160px;
-  font-family: sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.375em;
